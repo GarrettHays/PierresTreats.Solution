@@ -1,16 +1,15 @@
 @model SweetsTreats.Models.Treat
+@{
+  Layout = "_Layout";
+}
 
-<div class="container">
-<h4>Add a new Treat</h4>
-    <div id="table">
-        @using (Html.BeginForm())
-        {
-            @Html.LabelFor(model => model.Name)
-            @Html.TextBoxFor(model => model.Name, new { required = "required" })<br>
-
-            <br><input type="submit" value="Add new Treat" class="myCssClass" />   
-        }
-    </div>
-<br>
-<p>@Html.ActionLink("Show all Treats", "Index")</p>
-</div>
+<h1>ADD TREAT:</h1>
+@using (Html.BeginForm())
+{
+  <div class = "inputspacing">
+  @Html.LabelFor(model => model.Name, "Name:" , new { @class="customLabel"})
+  @Html.TextBoxFor(model => model.Name, new { required = "required" })
+  
+  <input type="image" img src="https://raw.githubusercontent.com/GarrettHays/images/main/noun-add-258794.png" class = "addicon" style="width:20px;"/>
+  </div>
+}
