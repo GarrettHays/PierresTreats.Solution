@@ -1,17 +1,22 @@
 @model SweetsTreats.Models.Treat
 
-<h2>Add a Flavor</h2>
+@{
+  Layout = "_Layout";
+}
 
-<h4>Add a Flavor to this Treat: @Html.DisplayFor(model => model.Name)</h4>
+<h1>ADD FLAVOR:</h1>
+
+<h4>Add a flavor that the @Html.DisplayFor(model => model.Name) treat comes in:</h4>
 
 @using (Html.BeginForm())
 {
     @Html.HiddenFor(model => model.TreatId)
 
-    @Html.Label("Select Flavor")
+    @Html.Label("Select Flavor", "Select Flavor:")
     @Html.DropDownList("FlavorId")
 
-    <input type="submit" value="Save" />
+    <input class = "saveicon" type="image" img src="https://raw.githubusercontent.com/GarrettHays/images/main/noun-save-5040600.png" style="width:20px;">
 }
 
-<p>@Html.ActionLink("Back to list", "Index")</p>
+<p>@Html.ActionLink("Back to Treats", "Index", null, null, new { @class="htmlButton"})</p>
+
