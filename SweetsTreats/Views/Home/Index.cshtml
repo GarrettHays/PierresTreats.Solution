@@ -1,43 +1,26 @@
 ﻿@using System.Security.Claims;
 @using SweetsTreats.Models;
 
-<div class="container">
-     
-     @if (User.Identity.IsAuthenticated)
-      {
-        <div id="tableOne">
-          
-            <ul>
-            @foreach (Flavor flavor in @ViewBag.Flavors)
-            {
-              <li>@Html.ActionLink($"{flavor.Name}", "Details", "Flavors", new { id = flavor.FlavorId})</li>
-            }
-            </ul>
-          </div>
-          <div id="tableOne">
-            <ul>
-            @foreach (Treat treat in @ViewBag.Treats)
-            {
-              <li>@Html.ActionLink($"{treat.Name}", "Details", "Treats", new { id = treat.TreatId })</li>
-            }
-            </ul>
-          </div>   
-          <table id="table">
-            <tr>
-              <td>@Html.ActionLink("Your Treats", "Index", "Treats")</td> 
-              <td>@Html.ActionLink("Your Flavors", "Index", "Flavors")</td>
-              <td>@Html.ActionLink("Account Info", "Index", "Account")</td>
-            </tr>
-          </table>  
-      }
-      else
-      {
-        <table id="table">
-          <tr>
-            <td>@Html.ActionLink("See all Treats", "Index", "Treats")</td> 
-            <td>@Html.ActionLink("See all Flavors", "Index", "Flavors")</td>
-            <br><td>@Html.ActionLink("Create an account", "Index", "Account")</td>
-          </tr>
-        </table> 
-      } 
-</div>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Pierre's Sweets & Treats</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/css/SweetStyles.css">
+  </head>
+  <body>
+    <div class="open">
+      <div class="layer"></div>
+      <div class="layer"></div>
+    </div>
+    <section>
+      <div class="bannerText">
+        <h2>Pierre's</h2><br>
+        <p>If you need the sweets, we've got the treats.</p>
+        <a class="landingbutton" href="@Url.Action("Index", "Main", null)">Enter Shop</a>
+      </div>
+      <img src="https://raw.githubusercontent.com/GarrettHays/images/main/cupcake.jpg" alt="logo" class="bulb">
+    </section>
+  </body>
+</html>
