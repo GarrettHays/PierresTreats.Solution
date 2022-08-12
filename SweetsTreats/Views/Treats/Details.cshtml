@@ -1,35 +1,35 @@
 @model SweetsTreats.Models.Treat;
+@{
+  Layout = "_Layout";
+}
 
-<div class="container">
-  <hr />
-  <h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h3>
+<h1>TREAT DETAILS:</h1>
+<h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h3>
 
   @if(@Model.JoinEntities.Count == 0)
   {
-    <p>This Treat does not contain any Flavors</p>
+    <p>This Treat has no Flavors!</p>
   }
   else
   {
-    <h4>Flavors the Treat contains:</h4>
+    <h4>Flavors this Treat comes in:</h4>
     <ul>
-    @foreach(var join in Model.JoinEntities)
-    {
-      <li>@join.Flavor.Name</li>
-      @using (Html.BeginForm("DeleteFlavor", "Treats"))
+      @foreach(var join in Model.JoinEntities)
       {
-        @Html.Hidden("joinId", @join.FlavorTreatId)
-        <input type="submit" value="Delete" class="btn btn-danger"/>
+        @using (Html.BeginForm("DeleteFlavor", "Treats"))
+        {
+          @Html.Hidden("joinId", @join.FlavorTreatId)
+          <li>@join.Flavor.Name
+          <input type="image" class = "flavortrashicon" img src="https://raw.githubusercontent.com/GarrettHays/images/main/noun-trash-can-2342129.png" style="width:20px;"/></li>
+        }
       }
-    }
     </ul>
   }
 
-  <table id="table">
-    <tr>
-      <td>@Html.ActionLink("Add a Flavor", "AddFlavor")</td>
-      <td>@Html.ActionLink("Back to Treats", "Index")</td>
-      <td>@Html.ActionLink("Edit Treat", "Edit", new { id = Model.TreatId })</td>
-      <td>@Html.ActionLink("Delete Treat", "Delete", new { id = Model.TreatId })</td>
-    </tr>
-  </table>
-</div>
+
+<p>
+  @Html.ActionLink("Add a Flavor", "AddFlavor", null, new {id = Model.TreatId}, new { @class ="htmlButton"})
+  @Html.ActionLink("Back to Treats", "Index", null, null, new { @class ="htmlButton"})
+  @Html.ActionLink("Edit Treat", "Edit", null, new {id = Model.TreatId }, new { @class ="htmlButton"})
+  @Html.ActionLink("Delete Treat", "Delete", null, new {id = Model.TreatId }, new { @class ="htmlButton"})
+</p>
