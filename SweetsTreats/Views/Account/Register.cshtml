@@ -1,23 +1,21 @@
 @using SweetsTreats.ViewModels
-
 @model RegisterViewModel
 
-<div class="container">
-  <hr />
-  <div id="table">
+@{
+  Layout = "_Layout";
+}
+<div class = "inputspacing">
     @using (Html.BeginForm("Register", "Account", FormMethod.Post))
     {
-        @Html.LabelFor(user => user.Email)
+        @Html.LabelFor(user => user.Email, "Email: ", new { @class="customLabel"})
         @Html.TextBoxFor(user=> user.Email, new { required = "required" })<br>
 
-        @Html.LabelFor(user=> user.Password)
+        @Html.LabelFor(user=> user.Password, "Password: ", new { @class="customLabel"})
         @Html.PasswordFor(user=> user.Password, new { required = "required" })<br>
 
-        @Html.LabelFor(user=> user.ConfirmPassword)
+        @Html.LabelFor(user=> user.ConfirmPassword, "Confirm Password: ", new { @class="customLabel"})
         @Html.PasswordFor(user=> user.ConfirmPassword, new { required = "required" })<br>
 
-        <br><input type="submit" value="Register" class="btn btn-success"/>
+        <br><input type="submit" value="Register" class="htmlButton"/>
     }
-    </div>
-  <p>@Html.ActionLink("Home", "Index", "Home")</p>
 </div>
